@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Nota Pemesanan</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #f5d76e;
+    }
+
+    .info {
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Nota Pemesanan</h2>
+
+  <p class="info">
+    Silakan screenshot nota ini dan kirim ke WhatsApp official kami untuk konfirmasi pesanan.
+  </p>
+
+  <div class="box">Nama: <span id="nama"></span></div>
+  <div class="box">Produk: <span id="produk"></span></div>
+  <div class="box">Jumlah: <span id="jumlah"></span></div>
+
+  <button class="btn" onclick="kirimWA()">Kirim ke WhatsApp</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+let nama = params.get("nama");
+let produk = params.get("produk");
+let jumlah = params.get("jumlah");
+
+document.getElementById("nama").innerText = nama;
+document.getElementById("produk").innerText = produk;
+document.getElementById("jumlah").innerText = jumlah;
+
+function kirimWA() {
+  let pesan =
+    "📦 NOTA PEMESANAN%0A%0A" +
+    "Nama: " + nama + "%0A" +
+    "Produk: " + produk + "%0A" +
+    "Jumlah: " + jumlah;
+
+  window.open("https://wa.me/6285745110908?text=" + pesan, "_blank");
+}
+</script>
+
+</body>
+</html>

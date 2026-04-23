@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Parfum Mewah</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #f5d76e;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(245, 215, 110, 0.10), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(245, 215, 110, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.04), transparent 45%),
+    radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 60%),
+    linear-gradient(to bottom, #0f0f0f, #1a1a1a, #222);
+
+  background-blend-mode: screen;
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.015) 0px,
+    rgba(255,255,255,0.015) 1px,
+    transparent 1px,
+    transparent 50px
+  );
+
+  pointer-events: none;
+}
+
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(circle, transparent 60%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+}
+
+
+nav {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  border-bottom: 1px solid rgba(245,215,110,0.2);
+}
+
+h1 {
+  color: #f5d76e;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+p {
+  color: #ccc;
+}
+
+
+
+
+header {
+  text-align: center;
+  padding: 100px 20px;
+
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid rgba(245,215,110,0.15);
+}
+
+
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 200px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 15px rgba(245,215,110,0.3));
+}
+
+
+.cta {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 35px;
+  background-color: #d3d1ca;
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background-color: #fff;
+}
+
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+
+  margin: 40px 20px;
+  border-radius: 20px;
+
+  border: 1px solid rgba(245,215,110,0.15);
+}
+
+  section h2 {
+  font-size: 2.5em;
+  color: #f5d76e;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(to right, transparent, #f5d76e, transparent);
+}
+
+
+section h2 {
+  text-shadow: 0 0 10px rgba(245, 215, 110, 0.4);
+}
+
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 sejajar */
+  gap: 30px;
+  margin-top: 40px;
+}
+
+
+.produk {
+  background: rgba(30,30,30,0.6);
+  backdrop-filter: blur(6px);
+
+  padding: 20px;
+  border-radius: 15px;
+  transition: 0.3s;
+
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.produk:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(245,215,110,0.2);
+}
+
+.produk img {
+  max-width: 250px;
+  border-radius: 10px;
+}
+
+.produk h3 {
+  color: #f5d76e;
+}
+
+.produk p {
+  color: #ccc;
+}
+
+
+.produk.spesial {
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+  transform: scale(1.05);
+}
+
+.produk.spesial:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(212,175,55,0.9);
+}
+
+.produk.terbatas {
+  border: 2px dashed #ff4d4d; /* garis putus-putus merah elegan */
+  background: rgba(50,0,0,0.6); /* nuansa merah gelap */
+  box-shadow: 0 0 25px rgba(255,70,70,0.5);
+  transform: scale(1.08);
+  position: relative;
+}
+
+.produk.terbatas::before {
+  content: "LIMITED EDITION";
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  background: #ff4d4d;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 15px;
+  transform: rotate(10deg);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255,70,70,0.7);
+}
+
+
+
+footer {
+  text-align: center;
+  padding: 40px;
+
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+
+  border-top: 1px solid rgba(245,215,110,0.2);
+
+  color: #888;
+}
+  </style>
+</head>
+<body>
+  
+  <nav>
+    <h1>Rasya Parfume</h1>
+    <ul>
+      <li><a href="#koleksi">Koleksi</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+      <style>
+        nav ul li a {
+          color: #fff;
+        }
+        </style>
+    </ul>
+  </nav>
+
+  
+  <header>
+     <img src="c:\Users\crazy\Downloads\Logo kolaborasi Rasy.png" alt="Logo Rasya Parfume" class="logo">
+    <h2>De Luxury Of Parfume</h2>
+    <p>Parfum eksklusif yang memancarkan keanggunan, pesona, dan kemewahan sejati.</p>
+    
+  </header>
+
+  
+<section id="koleksi">
+  <h2>Koleksi Premium</h2>
+  <p>Temukan parfum eksklusif pilihan kami, dirancang dengan detail mewah dan aroma elegan.</p>
+
+  
+  <h3 style="color:#f5d76e; margin-top:40px;"> <== Cocok Untuk Wanita ==></h3>
+  <div class="produk-grid">
+   
+     <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://www.noli.rs/wp-content/uploads/2024/03/8.png" alt="Parfum Althair">
+        <h3>De Marly Athalia</h3>
+        <p>Kombinasi aroma rempah dan kayu cendana yang hangat.</p>
+        <strong>Rp 925.000</strong>
+      </a>
+    </div>
+
+    <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://us.parfums-de-marly.com/cdn/shop/files/2301_MARLY_DELINA_75ml_01v3_600x.jpg?v=1698411391" alt="Parfum Althair">
+        <h3>De Marly Delina</h3>
+        <p>Manis vanilla bertemu aroma strawberry premium.</p>
+        <strong>Rp 1.110.000</strong>
+      </a>
+    </div>
+
+    <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.jStVQna70nYJ0MQTJwtM_QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Parfum Palatine">
+        <h3>De Marly Palatine</h3>
+        <p>Kombinasi mawar Turki dan oud memberi kesan feminin kuat.</p>
+        <strong>Rp 1.800.000</strong>
+      </a>
+    </div>
+  </div>
+
+  
+  <h3 style="color:#f5d76e; margin-top:40px;"> <== Cocok Untuk Pria ==></h3>
+  <div class="produk-grid">
+    <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://puntotienda.com.py/wp-content/uploads/2024/01/Parfums-De-Marly-Men-s-Layton-EDP-Spray-4-2-oz-125-ml_08aefa86-bb4e-4fa1-9480-df1f31f5a8cc.93a169f608a94a574f984031f9edc175.webp" alt="Parfum Layton">
+        <h3>De Marly Layton</h3>
+        <p>Perpaduan citrus segar dan musk elegan.</p>
+        <strong>Rp 900.000</strong>
+      </a>
+    </div>
+
+    <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://us.parfums-de-marly.com/cdn/shop/files/2207_MARLY_DARLEY_125ml_600x.jpg?v=1698410670" alt="Parfum Darley">
+        <h3>De Marly Darley</h3>
+        <p>Perpaduan apel segar, lavender, dan amber.</p>
+        <strong>Rp 1.225.000</strong>
+      </a>
+    </div>
+
+
+    <div class="produk spesial">
+  <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+    <img src="https://tse4.mm.bing.net/th/id/OIP.jEKLzOT6nf2wkzKre9oQbAHaHa?w=1000&h=1000&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Parfum Haltane">
+    <h3>✨ De Marly Haltane ✨</h3>
+    <p><strong>PROMO SPESIAL!</strong> Aroma oriental yang lembut dan menenangkan.</p>
+    <p>
+      <span style="text-decoration: line-through; color:#888;">Rp 1.600.000</span>
+      <strong style="color:#d4af37; margin-left:10px;">Rp 1.280.000</strong>
+        <p style="color:red; font-weight:bold;">Diskon 20%</p>
+    </p>
+  </a>
+</div>
+
+     <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://limitedgallery.ae/wp-content/uploads/2023/09/PARFUMS-DE-MARLY-ALTHAIR-Box.webp" alt="Parfum Althair">
+        <h3>De Marly Althair</h3>
+        <p>Kombinasi aroma rempah dan kayu cendana yang hangat.</p>
+        <strong>Rp 1.710.000</strong>
+
+      </a>
+    </div>
+
+    <div class="produk">
+      <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+        <img src="https://www.scentstore.com/wp-content/uploads/2019/12/kalan-boxed.jpg" alt="Parfum Kalan">
+        <h3>De Marly Kalan</h3>
+        <p>Kombinasi aroma rempah dan kayu cendana yang hangat.</p>
+        <strong>Rp 1.850.000</strong>
+
+      </a>
+    </div>
+
+    <div class="produk terbatas">
+  <a href="pemesanan.html" style="text-decoration:none; color:inherit;">
+    <img src="https://tse1.mm.bing.net/th/id/OIP.O9geBKRcVfa8sxcGHW6eSQHaHa?pid=ImgDet&w=178&h=178&c=7&dpr=1,5&o=7&rm=3" alt="Parfum Godolphin">
+    <h3> 👑 De Marly Godolphin 👑 </h3>
+    <p><strong>"EDISI TERBATAS"</strong> Wangi jeruk bergamot dan mandarin yang segar.</p>
+    <strong style="color:#d4af37;">Rp 2.200.000</strong>
+  </a>
+</div>
+
+
+  </div>
+</section>
+
+  
+  <section id="tentang">
+    <h2>Tentang Kami</h2>
+    <p>Rasya Parfume berdedikasi menghadirkan parfum berkualitas tinggi dengan desain elegan, 
+       menciptakan pengalaman mewah bagi setiap pelanggan.</p>
+  </section>
+
+  
+ <section id="kontak">
+  <h2>Kontak</h2>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:15px;">
+
+    
+    <a href="https://wa.me/6285745110908?text=Halo%20saya%20tertarik%20dengan%20parfum%20Anda" target="_blank"
+       style="display:inline-block; padding:10px 20px; background:#25D366; color:#fff; text-decoration:none; border-radius:30px;">
+       💬 WhatsApp Kami
+    </a>
+
+    
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="30">
+      <a href="https://www.instagram.com/rrasyadrian/" target="_blank" style="color:#fff; text-decoration:none; font-weight:bold;">
+        Instagram Kami:@rrasyadrian
+      </a>
+    </div>
+
+    
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="30">
+      <a href="mailto:rasyaparfume@gmail.com" style="color:#fff; text-decoration:none; font-weight:bold;">
+        Email Kami:rasyaparfume@gmail.com
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  <footer>
+    &copy; 2026 Rasya Parfume. Semua Hak Dilindungi.
+  </footer>
+</body>
+</html>
