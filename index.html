@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Perfume</title>
+
+  <style>
+ 
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #fff;
+
+     background:
+  radial-gradient(circle at 20% 30%, rgba(245, 215, 110, 0.10), transparent 45%),
+  radial-gradient(circle at 80% 30%, rgba(245, 215, 110, 0.08), transparent 45%), /* kanan atas */
+  radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.04), transparent 45%),
+  radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 60%),
+  linear-gradient(to bottom, #0f0f0f, #1a1a1a, #222);
+
+      background-blend-mode: screen;
+    }
+
+    /* TEXTURE HALUS */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 50px
+      );
+
+      pointer-events: none;
+    }
+
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background: radial-gradient(
+        circle,
+        transparent 60%,
+        rgba(0,0,0,0.6) 100%
+      );
+
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+
+      border-bottom: 1px solid rgba(245, 215, 110, 0.2);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      width: 220px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 15px rgba(245, 215, 110, 0.3));
+      transition: 0.3s;
+    }
+
+    .logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: #f5d76e;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background-color: #d3d1ca;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #fff;
+      color: #111;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+
+      margin: 40px 20px;
+      border-radius: 20px;
+
+      border: 1px solid rgba(245, 215, 110, 0.15);
+    }
+
+    section h2 {
+      font-size: 2em;
+      color: #f5d76e;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      max-width: 600px;
+      margin: auto;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+
+      border-top: 1px solid rgba(245, 215, 110, 0.2);
+
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>   
+
+<body>
+
+  <header>
+    <img src="c:\Users\crazy\Downloads\Logo kolaborasi Rasy.png" alt="Logo Rasya Parfume" class="logo">
+
+    <h1>Rasya Parfume</h1>
+
+    <a href="halamanutama2.html" class="cta">Temukan Sekarang</a>
+  </header>
+
+  <section id="produk">
+    <h2>Koleksi Ekslusif</h2>
+    <p>
+      Setiap botol parfum kami dirancang dengan detail mewah,
+      menghadirkan aroma yang elegan dan tahan lama.
+      Cocok untuk momen istimewa maupun keseharian penuh gaya.
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2026 Rasya Parfume. Semua Hak Dilindungi.
+  </footer>
+
+</body>
+</html>
