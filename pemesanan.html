@@ -107,6 +107,13 @@ function kirimKeNota(event) {
     "&produk=" + encodeURIComponent(parfum) +
     "&jumlah=" + encodeURIComponent(jumlah);
 }
+
+const params = new URLSearchParams(window.location.search);
+const produk = params.get('produk');   // contoh: "De Marly Layton"
+const ukuran = params.get('ukuran');   // contoh: "125ml"
+const harga  = params.get('harga');    // contoh: "900.000"
+
+
 </script>
 
 </body>
