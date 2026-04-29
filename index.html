@@ -201,5 +201,35 @@ header .cta {
     &copy; 2026 Rasya Parfume. Semua Hak Dilindungi.
   </footer>
 
+
+
+ 
+  <script>
+   
+    let visits = localStorage.getItem("visits") || 0;
+
+   
+    visits++;
+
+   
+    localStorage.setItem("visits", visits);
+
+  
+    document.addEventListener("DOMContentLoaded", () => {
+  const counter = document.createElement("p");
+  counter.style.color = "#f5d76e";
+  counter.style.fontWeight = "bold";
+  counter.style.marginLeft = "10px";  
+  counter.style.marginTop = "10px";   
+  counter.innerText = "Jumlah kunjungan Anda: " + visits;
+  document.querySelector("footer").appendChild(counter); 
+});
+
+
+  </script>
+</body>
+</html>
+
+
 </body>
 </html>
