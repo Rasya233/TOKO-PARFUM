@@ -2,51 +2,44 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Nota Pemesanan</title>
+  <title>Nota Pembelian</title>
 
   <style>
     body {
-      margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
       background: #111;
       color: #fff;
+      text-align: center;
+      padding: 50px;
     }
 
-    .container {
-      max-width: 500px;
-      margin: 50px auto;
-      background: #222;
+    .nota {
+      background: #000;
       padding: 30px;
-      border-radius: 10px;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(245,215,110,0.3);
     }
 
     h2 {
-      text-align: center;
       color: #f5d76e;
     }
 
-    .info {
-      text-align: center;
-      font-size: 0.9em;
-      color: #ccc;
-      margin-bottom: 20px;
+    p {
+      font-size: 18px;
     }
 
-    .box {
-      background: #111;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 12px;
-      background: #25D366;
-      color: #fff;
+    a, button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #f5d76e;
+      color: #111;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
       border: none;
-      border-radius: 30px;
       cursor: pointer;
     }
   </style>
@@ -54,39 +47,43 @@
 
 <body>
 
-<div class="container">
-  <h2>Nota Pemesanan</h2>
+<div class="nota">
+  <h2>Nota Pembelian</h2>
 
-  <p class="info">
-    Silakan screenshot nota ini dan kirim ke WhatsApp official kami untuk konfirmasi pesanan.
-  </p>
+  <p id="nama"></p>
+  <p id="produk"></p>
+  <p id="jumlah"></p>
 
-  <div class="box">Nama: <span id="nama"></span></div>
-  <div class="box">Produk: <span id="produk"></span></div>
-  <div class="box">Jumlah: <span id="jumlah"></span></div>
-
-  <button class="btn" onclick="kirimWA()">Kirim ke WhatsApp</button>
+  <button onclick="kirimWA()">Kirim ke WhatsApp</button>
+  <br>
+  <a href="index.html">Kembali ke Beranda</a>
 </div>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 
-let nama = params.get("nama");
-let produk = params.get("produk");
-let jumlah = params.get("jumlah");
+const nama = params.get("nama");
+const produk = params.get("produk");
+const jumlah = params.get("jumlah");
 
-document.getElementById("nama").innerText = nama;
-document.getElementById("produk").innerText = produk;
-document.getElementById("jumlah").innerText = jumlah;
+document.getElementById("nama").innerText = "Nama: " + nama;
+document.getElementById("produk").innerText = "Produk: " + produk;
+document.getElementById("jumlah").innerText = "Jumlah: " + jumlah;
 
 function kirimWA() {
-  let pesan =
-    "📦 NOTA PEMESANAN%0A%0A" +
-    "Nama: " + nama + "%0A" +
-    "Produk: " + produk + "%0A" +
-    "Jumlah: " + jumlah;
+  const noWA = "6285745110908"; // GANTI dengan nomor kamu (pakai 62, tanpa 0)
 
-  window.open("https://wa.me/6285745110908?text=" + pesan, "_blank");
+  const pesan = `Halo, saya ingin memesan parfum:
+
+Nama: ${nama}
+Produk: ${produk}
+Jumlah: ${jumlah}
+
+Terima kasih`;
+
+  const url = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+
+  window.open(url, "_blank");
 }
 </script>
 
