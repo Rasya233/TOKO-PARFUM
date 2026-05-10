@@ -82,7 +82,7 @@
       <option>De Marly Palatine</option>
       <option>De Marly Layton</option>
       <option>De Marly Darley</option>
-      <option>De Marlby Haltane</option>
+      <option>De Marly Haltane</option>
       <option>De Marly Althair</option>
       <option>De Marly Kalan</option>
       <option>De Marly Godolphin</option>
@@ -96,25 +96,61 @@
   </form>
 </section>
 
-<script>
 
-window.onload = function() {
+
+  <script>
+
+
+
+window.onload = function () {
+
   const urlParams = new URLSearchParams(window.location.search);
+
   const produkDipilih = urlParams.get('produk');
 
   if (produkDipilih) {
+
     const select = document.getElementById("parfum");
 
     for (let i = 0; i < select.options.length; i++) {
+
       if (select.options[i].text === produkDipilih) {
+
         select.selectedIndex = i;
+
         break;
+
       }
     }
   }
 }
 
+function kirimKeNota(event) {
+
+  event.preventDefault();
+
+  const nama = document.getElementById("nama").value;
+
+  const email = document.getElementById("email").value;
+
+  const parfum = document.getElementById("parfum").value;
+
+  const jumlah = document.getElementById("jumlah").value;
+
+  window.location.href =
+    "nota.html?" +
+    "nama=" + encodeURIComponent(nama) +
+    "&email=" + encodeURIComponent(email) +
+    "&parfum=" + encodeURIComponent(parfum) +
+    "&jumlah=" + encodeURIComponent(jumlah);
+
+}
+
+
+
 </script>
+
+
 
 </body>
 </html>

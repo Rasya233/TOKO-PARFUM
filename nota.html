@@ -2,76 +2,241 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nota Pembelian</title>
 
   <style>
+
     body {
+      margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      background: #111;
+      background: linear-gradient(to bottom, #111, #222);
       color: #fff;
-      text-align: center;
-      padding: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .nota {
+      width: 100%;
+      max-width: 550px;
       background: #000;
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 15px rgba(245,215,110,0.3);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 0 20px rgba(245,215,110,0.25);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #f5d76e;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
     }
 
     h2 {
+      text-align: center;
       color: #f5d76e;
+      margin-bottom: 30px;
     }
 
-    p {
-      font-size: 18px;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #333;
+      font-size: 17px;
     }
 
-    a, button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 20px;
-      background: #f5d76e;
-      color: #111;
-      border-radius: 20px;
+    .label {
+      color: #f5d76e;
+      font-weight: bold;
+    }
+
+    .value {
+      color: #fff;
+    }
+
+    .status {
+      margin-top: 25px;
+      background: rgba(0,255,120,0.1);
+      border: 1px solid #00ff99;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      color: #00ff99;
+      font-weight: bold;
+    }
+
+    .thanks-message {
+      margin-top: 25px;
+      background: rgba(245,215,110,0.08);
+      border: 1px solid rgba(245,215,110,0.3);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .thanks-message h3 {
+      color: #f5d76e;
+      margin-bottom: 12px;
+    }
+
+    .thanks-message p {
+      color: #ccc;
+      line-height: 1.7;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .button-group {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    button,
+    a {
+      flex: 1;
+      text-align: center;
+      padding: 14px;
+      border-radius: 30px;
+      border: none;
       text-decoration: none;
       font-weight: bold;
-      border: none;
       cursor: pointer;
+      transition: 0.3s;
+      font-size: 15px;
     }
+
+    button {
+      background: #25D366;
+      color: white;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+    }
+
+    a {
+      background: #f5d76e;
+      color: #111;
+    }
+
+    a:hover {
+      transform: scale(1.03);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #777;
+      font-size: 14px;
+    }
+
   </style>
 </head>
 
 <body>
 
 <div class="nota">
+
+  <div class="logo">Rasya Perfume</div>
+
+  <div class="sub">Luxury Fragrance Store</div>
+
   <h2>Nota Pembelian</h2>
 
-  <p id="nama"></p>
-  <p id="produk"></p>
-  <p id="jumlah"></p>
+  <div class="item">
+    <span class="label">Nama</span>
+    <span class="value" id="nama"></span>
+  </div>
 
-  <button onclick="kirimWA()">Kirim ke WhatsApp</button>
-  <br>
-  <a href="index.html">Kembali ke Beranda</a>
+  <div class="item">
+    <span class="label">Produk</span>
+    <span class="value" id="produk"></span>
+  </div>
+
+  <div class="item">
+    <span class="label">Jumlah</span>
+    <span class="value" id="jumlah"></span>
+  </div>
+
+  <div class="status">
+    ✔ Pesanan Berhasil Dibuat
+  </div>
+
+  <div class="thanks-message">
+
+    <h3>Terima Kasih Telah Memesan ✨</h3>
+
+    <p>
+      Pesanan parfum Anda sedang kami proses.
+      Kami sangat menghargai kepercayaan Anda berbelanja di
+      <strong>Rasya Perfume</strong>.
+    </p>
+
+    <p>
+      HARAP KIRIM NOTA KE WHATSAPP KAMI UNTUK PROSES PEMBAYARAN.
+    </p>
+
+  </div>
+
+  <div class="button-group">
+
+    <button onclick="kirimWA()">
+      Kirim ke WhatsApp
+    </button>
+
+    <a href="index.html">
+      Masuk ke Beranda
+    </a>
+
+  </div>
+
+  <div class="footer">
+    Terima kasih telah berbelanja di Rasya Perfume
+  </div>
+
 </div>
 
 <script>
+
 const params = new URLSearchParams(window.location.search);
 
 const nama = params.get("nama");
-const produk = params.get("produk");
+const produk = params.get("parfum");
 const jumlah = params.get("jumlah");
 
-document.getElementById("nama").innerText = "Nama: " + nama;
-document.getElementById("produk").innerText = "Produk: " + produk;
-document.getElementById("jumlah").innerText = "Jumlah: " + jumlah;
+document.getElementById("nama").innerText = nama;
+document.getElementById("produk").innerText = produk;
+document.getElementById("jumlah").innerText = jumlah;
 
 function kirimWA() {
-  const noWA = "6285745110908"; // GANTI dengan nomor kamu (pakai 62, tanpa 0)
+
+  const noWA = "6285745110908";
 
   const pesan = `Halo, saya ingin memesan parfum:
 
@@ -85,6 +250,7 @@ Terima kasih`;
 
   window.open(url, "_blank");
 }
+
 </script>
 
 </body>
