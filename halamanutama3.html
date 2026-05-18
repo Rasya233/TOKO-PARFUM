@@ -392,56 +392,71 @@
       font-size: 0.95em;
     }
 
-    .harga {
-      color: #f5d76e;
-    }
-
-    .produk-body p:last-of-type {
-      color: #ffffff;
-    }
-
-    .rating:hover {
-  transform: scale(1.1);
-  color: gold;
+   .harga {
+  color: #f5d76e;
+  font-weight: bold;
+  font-size: 1em;
+  margin: 8px 0 !important;
 }
 
-.rating {
-  margin-top: 6px;
-  font-size: 1.1em;
-  color: #ccc;
-  cursor: pointer;
-  user-select: none;
-  transition: 0.2s;
+.harga-coret {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 0.88em;
+  margin-right: 6px;
 }
 
-.rating .star {
-  transition: 0.2s;
+.harga-promo {
+  color: #d4af37;
+  font-weight: bold;
+  font-size: 1.05em;
 }
 
-.rating .star.active {
-  color: gold;
-  transform: scale(1.2);
-}
-
-.rating .info {
-  display: block;
-  font-size: 0.75em;
-  color: #aaa;
-  margin-top: 2px;
-}
 
 .diskon{
-  margin-top: 6px;
+  margin-top: 10px;
   display: inline-block;
-  background: rgba(255,255,255,0.06);
-  color: #ffdf70;
-  border: 1px solid rgba(245,215,110,0.4);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8em;
+  background: linear-gradient(135deg, #d4af37, #f5d76e);
+  color: #111 !important;
+  border: 1px solid rgba(245,215,110,0.6);
+  padding: 7px 16px;
+  border-radius: 30px;
+  font-size: 0.82em;
   font-weight: bold;
   letter-spacing: 1px;
-  box-shadow: 0 0 10px rgba(245,215,110,0.15);
+  box-shadow: 0 0 15px rgba(245,215,110,0.35);
+  animation: glowDiskon 1.5s infinite alternate;
+}
+
+@keyframes glowDiskon {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(245,215,110,0.25);
+  }
+
+  to {
+    transform: scale(1.05);
+    box-shadow: 0 0 22px rgba(245,215,110,0.7);
+  }
+}
+
+.terjual{
+  color: #ffffff !important;
+  margin-top: 8px;
+}
+
+
+.badge-hemat {
+  display: inline-block;
+  background: rgba(184,150,30,0.12);
+  border: 1px solid rgba(212,175,55,0.4);
+  color: #d4af37;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
 }
   </style>
 </head>
@@ -466,7 +481,7 @@
     <h2>Koleksi Premium</h2>
     <p>Temukan parfum eksklusif pilihan kami.</p>
 
-    <!-- WANITA -->
+    
     <div class="gender-label">
       <span>Cocok Untuk Wanita</span>
     </div>
@@ -529,7 +544,7 @@
 
     </div>
 
-    <!-- PRIA -->
+    
     <div class="gender-label">
       <span>Cocok Untuk Pria</span>
     </div>
@@ -582,38 +597,24 @@
         </div>
       </div>
 
-      <div class="produk">
-        <div class="produk-img-wrap">
-          <img src="https://th.bing.com/th/id/OIP.Rne8hOnEsKNdVMWGl4LtQgHaHa?w=188&h=188&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3">
-        </div>
-
-        <div class="produk-body">
-          <h3>✨ De Marly Haltane ✨</h3>
-
-          <p>
-            <strong>PROMO SPESIAL!</strong>
-            Aroma oriental lembut dan menenangkan.
-          </p>
-
-          <p class="harga">
-            <span class="harga-coret">Rp 1.600.000</span>
-            <span class="harga-promo">Rp 1.280.000</span>
-          </p>
-
-          <p class="diskon">🔥 Hemat 20%</p>
-
-          <p class="terjual">Terjual: 189</p>
-
-          <a class="btn-pesan" href="pemesanan.html?id=5&produk=De%20Marly%20Haltane">
-            🛒 Pesan Sekarang
-          </a>
-
-          <div class="rating" data-id="5">
-            ⭐⭐⭐⭐⭐
-            <span class="nilai">(4.7)</span>
-          </div>
-        </div>
-      </div>
+     <div class="produk">
+  <div class="promo-ribbon">Promo Spesial · Hemat 20%</div>
+  <div class="produk-img-wrap" style="margin-top:52px">
+    <img src="https://th.bing.com/th/id/OIP.Rne8hOnEsKNdVMWGl4LtQgHaHa?w=188&h=188&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3">
+  </div>
+  <div class="produk-body">
+    <h3>De Marly Haltane</h3>
+    <p>Aroma oriental lembut dan menenangkan.</p>
+    <div class="harga-promo-wrap">
+      <span class="harga-coret">Rp 1.600.000</span>
+      <span class="harga-promo">Rp 1.280.000</span>
+    </div>
+    <span class="badge-hemat">Hemat Rp 320.000</span>
+    <p class="terjual">Terjual: 189</p>
+    <a class="btn-pesan" href="pemesanan.html?id=5&produk=De%20Marly%20Haltane">🛒 Pesan Sekarang</a>
+    <div class="rating" data-id="5">⭐⭐⭐⭐⭐<span class="nilai">(4.7)</span></div>
+  </div>
+</div>
 
       <div class="produk">
         <div class="produk-img-wrap">
@@ -709,7 +710,7 @@
     </div>
   </section>
 
-  <!-- TENTANG -->
+  
   <section id="tentang">
     <h2>Tentang Kami</h2>
 
@@ -719,7 +720,7 @@
     </p>
   </section>
 
-  <!-- KONTAK -->
+ 
   <section id="kontak">
     <h2>Kontak</h2>
 
@@ -764,9 +765,7 @@
 </body>
 
   <script>
-// =======================
-// DATA TERJUAL (LOCALSTORAGE)
-// =======================
+
 const semuaProduk = document.querySelectorAll('.produk');
 
 semuaProduk.forEach((produk, index) => {
@@ -783,9 +782,7 @@ semuaProduk.forEach((produk, index) => {
   }
 });
 
-// =======================
-// CHART UTAMA (WAJIB ADA)
-// =======================
+
 let namaProduk = [
   "Athalia","Delina","Palatine",
   "Layton","Darley","Haltane",
@@ -825,9 +822,6 @@ if (document.getElementById('grafikProduk')) {
   });
 }
 
-// =======================
-// CHART TAMBAHAN (AMAN)
-// =======================
 
 // DATA DUMMY BIAR TIDAK ERROR
 const bulan = ["Jan","Feb","Mar","Apr","Mei","Jun"];
@@ -904,9 +898,7 @@ if (document.getElementById('grafik3')) {
 }
 
 
-  // =======================
-// RATING PRO (SHOPEE STYLE)
-// =======================
+
 const semuaRating = document.querySelectorAll('.rating');
 
 semuaRating.forEach(ratingEl => {
@@ -924,7 +916,7 @@ semuaRating.forEach(ratingEl => {
     };
   }
 
-  // buat bintang
+  
   ratingEl.innerHTML = `
     <div class="stars"></div>
     <span class="nilai"></span>
@@ -958,7 +950,6 @@ semuaRating.forEach(ratingEl => {
 
   update();
 
-  // HOVER EFFECT
   stars.forEach(star => {
     star.addEventListener('mouseover', () => {
       let val = star.dataset.value;
@@ -970,7 +961,7 @@ semuaRating.forEach(ratingEl => {
 
     star.addEventListener('mouseout', update);
 
-    // KLIK
+    
     star.addEventListener('click', () => {
       let nilai = parseInt(star.dataset.value);
 
