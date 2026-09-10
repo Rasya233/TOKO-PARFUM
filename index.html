@@ -135,6 +135,7 @@ header .cta {
     .cta:hover {
       background-color: #fff;
       color: #111;
+      transform: scale(1.05); 
     }
 
     section {
@@ -175,6 +176,46 @@ header .cta {
       color: #888;
       font-size: 0.9em;
     }
+
+    .footer-tagline {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(245, 215, 110, 0.3);
+  margin: 4px 0 14px;
+}
+.visit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(245, 215, 110, 0.08);
+  border: 0.5px solid rgba(245, 215, 110, 0.35);
+  border-radius: 40px;
+  padding: 10px 22px;
+}
+.visit-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(245, 215, 110, 0.15);
+  border: 0.5px solid rgba(245, 215, 110, 0.4);
+  display: flex; align-items: center; justify-content: center;
+}
+.visit-divider {
+  width: 0.5px; height: 28px;
+  background: rgba(245, 215, 110, 0.2);
+}
+.visit-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245, 215, 110, 0.6);
+  margin-bottom: 3px;
+}
+.visit-count {
+  font-size: 17px;
+  font-weight: 500;
+  color: #f5d76e;
+}
   </style>
 </head>   
 
@@ -185,7 +226,7 @@ header .cta {
 
     <h1>Rasya Parfume</h1>
 
-    <a href="halamanutama3.html" class="cta">Temukan Sekarang</a>
+    <a href="halamanutama5.html" class="cta">Temukan Sekarang</a>
   </header>
 
   <section id="produk">
@@ -197,36 +238,37 @@ header .cta {
     </p>
   </section>
 
-  <footer>
-    &copy; 2026 Rasya Parfume. Semua Hak Dilindungi.
-  </footer>
-
-
-
- 
-  <script>
-   
-    let visits = localStorage.getItem("visits") || 0;
-
-   
-    visits++;
-
-   
-    localStorage.setItem("visits", visits);
-
+ <footer>
+  <p>&copy; 2026 Rasya Parfume. Semua Hak Dilindungi.</p>
   
-    document.addEventListener("DOMContentLoaded", () => {
-  const counter = document.createElement("p");
-  counter.style.color = "#f5d76e";
-  counter.style.fontWeight = "bold";
-  counter.style.marginLeft = "10px";  
-  counter.style.marginTop = "10px";   
-  counter.innerText = "Jumlah kunjungan Anda: " + visits;
-  document.querySelector("footer").appendChild(counter); 
+  <div class="visit-badge" id="visit-badge" style="display:none;">
+    <div class="visit-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5d76e" stroke-width="1.8" stroke-linecap="round">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+    </div>
+    <div class="visit-divider"></div>
+    <div>
+      <div class="visit-label">Kunjungan Anda</div>
+      <div class="visit-count" id="visit-count"></div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+ 
+ let visits = parseInt(localStorage.getItem("visits") || "0") + 1;
+localStorage.setItem("visits", visits);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const badge = document.getElementById("visit-badge");
+  document.getElementById("visit-count").textContent = visits.toLocaleString("id-ID");
+  badge.style.display = "inline-flex";
 });
 
-
-  </script>
+</script>
 </body>
 </html>
 

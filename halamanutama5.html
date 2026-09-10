@@ -120,7 +120,7 @@
     }
 
     .produk:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
       box-shadow: 0 0 20px rgba(245,215,110,0.2);
     }
 
@@ -455,6 +455,138 @@
       color: #888;
       font-size: 0.95em;
     }
+
+    .popup-cart{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.cart-box{
+  width: 90%;
+  max-width: 500px;
+  background: #151515;
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(245,215,110,0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.cart-header h2{
+  color:#f5d76e;
+}
+
+.cart-header button{
+  background:none;
+  border:none;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.item-cart{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: rgba(255,255,255,0.03);
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.item-cart h4{
+  margin:0;
+  color:#f5d76e;
+}
+
+.item-cart p{
+  margin:4px 0 0;
+  color:#ccc;
+  font-size:14px;
+}
+
+.hapus-btn{
+  background:#ff4d4d;
+  border:none;
+  color:white;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.cart-footer{
+  margin-top:20px;
+}
+
+.cart-footer h3{
+  color:white;
+}
+
+.checkout-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background: linear-gradient(135deg,#d4af37,#f5d76e);
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+.aksi-produk{
+  display:flex;
+  gap:10px;
+  width:100%;
+  margin-top:16px;
+}
+
+.btn-keranjang,
+.btn-beli{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:0.9em;
+}
+
+.btn-keranjang{
+  background:transparent;
+  border:1px solid #d4af37;
+  color:#f5d76e;
+}
+
+.btn-keranjang:hover{
+  background:#d4af37;
+  color:#111;
+  transform:translateY(-2px);
+}
+
+.btn-beli{
+  background:transparent;
+  border:1px solid #00fd08;
+  color:#f1f5f1;
+}
+
+.btn-beli:hover{
+   background:#00fd08;
+  color:#111;
+  transform:translateY(-2px);
+}
   </style>
 </head>
 <body>
@@ -466,6 +598,12 @@
       <li><a href="#penjualan">Penjualan</a></li>
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#kontak">Kontak</a></li>
+
+      <li>
+        <a href="#" id="bukaKeranjang">
+          🛒 Keranjang (<span id="jumlahKeranjang">0</span>)
+        </a>
+      </li>
     </ul>
   </nav>
 
@@ -490,10 +628,21 @@
         </div>
         <div class="produk-body">
           <h3>De Marly Athalia</h3>
-          <p>Manis vanilla bertemu aroma strawberry premium.</p>
+          <p>Aroma Manis dan Fresh Nanas.</p>
           <p class="harga">75 ml — Rp 1.110.000</p>
           <p class="terjual">Terjual: 120</p>
-          <a class="btn-pesan" href="pemesanan.html?id=0&produk=De%20Marly%20Athalia">🛒 Pesan Sekarang</a>
+          <li>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Athalia',1110000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Athalia',1110000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="0">
             ⭐⭐⭐⭐<span class="nilai">(4.0)</span>
           </div>
@@ -509,7 +658,17 @@
           <p>Manis vanilla bertemu aroma strawberry premium.</p>
           <p class="harga">75 ml — Rp 1.180.000</p>
           <p class="terjual">Terjual: 98</p>
-          <a class="btn-pesan" href="pemesanan.html?id=1&produk=De%20Marly%20Delina">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Delina',1180000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Delina',1180000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="1">
             ⭐⭐⭐⭐<span class="nilai">(4.1)</span>
           </div>
@@ -525,7 +684,16 @@
           <p>Kombinasi mawar Turki dan oud, feminin kuat.</p>
           <p class="harga">75 ml — Rp 1.210.000</p>
           <p class="terjual">Terjual: 75</p>
-          <a class="btn-pesan" href="pemesanan.html?id=2&produk=De%20Marly%20Palatine">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Palatine',1210000)">
+    🛒 Tambah Keranjang
+  </button>
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Palatine',1210000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="2">
             ⭐⭐⭐⭐<span class="nilai">(4.2)</span>
           </div>
@@ -550,7 +718,17 @@
           <p>Perpaduan citrus segar dan musk elegan.</p>
           <p class="harga">125 ml — Rp 900.000</p>
           <p class="terjual">Terjual: 210</p>
-          <a class="btn-pesan" href="pemesanan.html?id=3&produk=De%20Marly%20Layton">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Layton',900000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Layton',900000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="3">
             ⭐⭐⭐⭐<span class="nilai">(4.8)</span>
           </div>
@@ -566,7 +744,17 @@
           <p>Perpaduan apel segar, lavender, dan amber.</p>
           <p class="harga">125 ml — Rp 1.225.000</p>
           <p class="terjual">Terjual: 132</p>
-          <a class="btn-pesan" href="pemesanan.html?id=4&produk=De%20Marly%20Darley">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Darley',1225000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Darley',1225000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="4">
             ⭐⭐⭐⭐⭐<span class="nilai">(5.0)</span>
           </div>
@@ -587,7 +775,17 @@
           </div>
           <span class="badge-hemat">Hemat Rp 320.000</span>
           <p class="terjual">Terjual: 189</p>
-          <a class="btn-pesan" href="pemesanan.html?id=5&produk=De%20Marly%20Haltane">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Haltane',1280000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Haltane',1280000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="5">
             ⭐⭐⭐⭐⭐<span class="nilai">(4.7)</span>
           </div>
@@ -603,7 +801,17 @@
           <p>Rempah dan kayu cendana yang hangat.</p>
           <p class="harga">125 ml — Rp 1.710.000</p>
           <p class="terjual">Terjual: 87</p>
-          <a class="btn-pesan" href="pemesanan.html?id=6&produk=De%20Marly%20Althair">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Althair',1710000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Althair',1710000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="6">
             ⭐⭐⭐⭐<span class="nilai">(4.2)</span>
           </div>
@@ -616,10 +824,20 @@
         </div>
         <div class="produk-body">
           <h3>De Marly Kalan</h3>
-          <p>Rempah dan kayu cendana yang hangat.</p>
+          <p>Ekstrak Buah Semangka berpadu Aroma Mint.</p>
           <p class="harga">125 ml — Rp 1.850.000</p>
           <p class="terjual">Terjual: 64</p>
-          <a class="btn-pesan" href="pemesanan.html?id=7&produk=De%20Marly%20Kalan">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Kalan',1850000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Kalan',1850000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="7">
             ⭐⭐⭐⭐<span class="nilai">(4.0)</span>
           </div>
@@ -636,7 +854,17 @@
           <p><strong>EDISI TERBATAS</strong> — Bergamot dan mandarin yang segar.</p>
           <p class="harga">125 ml — Rp 2.500.000</p>
           <p class="terjual">Terjual: 42</p>
-          <a class="btn-pesan" href="pemesanan.html?id=8&produk=De%20Marly%20Godolphin">🛒 Pesan Sekarang</a>
+          <div class="aksi-produk">
+  <button class="btn-keranjang"
+    onclick="tambahKeranjang('De Marly Godolphin',2500000)">
+    🛒 Tambah Keranjang
+  </button>
+
+  <button class="btn-beli"
+    onclick="beliSekarang('De Marly Godolphin',2500000)">
+    ⚡ Beli Sekarang
+  </button>
+</div>
           <div class="rating" data-id="8">
             ⭐⭐⭐⭐<span class="nilai">(4.5)</span>
           </div>
@@ -805,7 +1033,164 @@
         });
       });
     });
-  </script>
 
+    let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+
+function simpanKeranjang(){
+  localStorage.setItem('keranjang', JSON.stringify(keranjang));
+  updateKeranjang();
+}
+
+function tambahKeranjang(nama, harga){
+
+  keranjang.push({
+    nama,
+    harga
+  });
+
+  simpanKeranjang();
+
+  alert(nama + ' ditambahkan ke keranjang!');
+}
+
+function updateKeranjang(){
+
+  const isi = document.getElementById('isiKeranjang');
+  const jumlah = document.getElementById('jumlahKeranjang');
+  const total = document.getElementById('totalHarga');
+
+  isi.innerHTML = '';
+
+  let totalHarga = 0;
+
+  jumlah.innerText = keranjang.length;
+
+  keranjang.forEach((item,index)=>{
+
+    totalHarga += item.harga;
+
+    isi.innerHTML += `
+      <div class="item-cart">
+
+        <div>
+          <h4>${item.nama}</h4>
+          <p>Rp ${item.harga.toLocaleString()}</p>
+        </div>
+
+        <button class="hapus-btn"
+        onclick="hapusItem(${index})">
+          Hapus
+        </button>
+
+      </div>
+    `;
+  });
+
+  total.innerText =
+    'Rp ' + totalHarga.toLocaleString();
+}
+
+function hapusItem(index){
+  keranjang.splice(index,1);
+  simpanKeranjang();
+}
+
+document.getElementById('bukaKeranjang')
+.addEventListener('click', function(e){
+
+  e.preventDefault();
+
+  document.getElementById('popupCart')
+  .style.display = 'flex';
+});
+
+function tutupKeranjang(){
+
+  document.getElementById('popupCart')
+  .style.display = 'none';
+}
+
+function checkoutWhatsApp(){
+
+  if(keranjang.length === 0){
+    alert('Keranjang masih kosong!');
+    return;
+  }
+
+  let pesan =
+    'Halo, saya ingin memesan:%0A%0A';
+
+  let total = 0;
+
+  keranjang.forEach((item)=>{
+
+    pesan +=
+      '- ' + item.nama +
+      ' | Rp ' +
+      item.harga.toLocaleString() +
+      '%0A';
+
+    total += item.harga;
+  });
+
+  pesan +=
+    '%0ATotal: Rp ' +
+    total.toLocaleString();
+
+  window.open(
+    'https://wa.me/6285745110908?text=' + pesan,
+    '_blank'
+  );
+}
+
+function tambahKeranjang(nama, harga){
+
+  keranjang.push({
+    nama: nama,
+    harga: harga,
+    qty: 1
+  });
+
+  simpanKeranjang();
+
+  alert(nama + ' berhasil ditambahkan ke keranjang 🛒');
+}
+
+function beliSekarang(nama, harga){
+  localStorage.setItem('checkout', JSON.stringify({
+    nama: nama,
+    harga: harga
+  }));
+
+  window.location.href = 'pemesanan.html';
+}
+
+updateKeranjang();
+  </script>
+  <div class="popup-cart" id="popupCart">
+
+  <div class="cart-box">
+
+    <div class="cart-header">
+      <h2>🛒 Keranjang Belanja</h2>
+      <button onclick="tutupKeranjang()">✕</button>
+    </div>
+
+    <div id="isiKeranjang"></div>
+
+    <div class="cart-footer">
+      <h3>Total:
+        <span id="totalHarga">Rp 0</span>
+      </h3>
+
+      <button class="checkout-btn"
+      onclick="checkoutWhatsApp()">
+        Checkout WhatsApp
+      </button>
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>
